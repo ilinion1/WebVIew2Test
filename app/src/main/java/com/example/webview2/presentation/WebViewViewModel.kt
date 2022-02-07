@@ -8,11 +8,8 @@ import com.example.webview2.domain.LoadDataUseCase
 
 class WebViewViewModel(application: Application) : AndroidViewModel(application) {
 
-
     private val repository = WebViewRepositoryImpl(application)
-
     val getLinkUseCase = GetLinkUseCase(repository)
     val loadDataUseCase = LoadDataUseCase(repository)
-
 
 }

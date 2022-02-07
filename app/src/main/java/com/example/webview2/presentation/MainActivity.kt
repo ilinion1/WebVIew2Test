@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val compositeDisposable = CompositeDisposable()
     private val viewModel: WebViewViewModel by viewModels()
 
 
@@ -24,13 +23,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.loadDataUseCase()
             starsFragment(WebViewFragment())
         }
     }
-
 
     private fun starsFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
@@ -43,10 +40,5 @@ class MainActivity : AppCompatActivity() {
         if (webView.canGoBack()) {
             webView.goBack()
         } else super.onBackPressed()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        compositeDisposable.dispose()
     }
 }
