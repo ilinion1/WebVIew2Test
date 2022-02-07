@@ -10,6 +10,7 @@ import com.example.webview2.R
 import com.example.webview2.databinding.ActivityMainBinding
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        starsFragment(LoadFragment())
+
         lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.loadData()
+            delay(1000)
             starsFragment(WebViewFragment())
         }
     }

@@ -15,7 +15,11 @@ class WebViewViewModel(application: Application) : AndroidViewModel(application)
     private val db = AppDatabase.getInstance(application)
     val getLink = db.webViewDao().getLink()
 
-    fun loadData() {
+    init {
+        loadData()
+    }
+
+    private fun loadData() {
         val disposable = ApiFactory.apiService.loadLink()
             .subscribeOn(Schedulers.io())
             .subscribe(
