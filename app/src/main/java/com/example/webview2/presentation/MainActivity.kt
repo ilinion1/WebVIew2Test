@@ -24,8 +24,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         lifecycleScope.launch(Dispatchers.IO) {
-            delay(1000)
+            viewModel.loadData()
             starsFragment(WebViewFragment())
         }
     }

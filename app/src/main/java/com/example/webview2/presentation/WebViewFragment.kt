@@ -12,9 +12,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.webview2.R
 import com.example.webview2.databinding.FragmentWebViewBinding
 
-class WebViewFragment() : Fragment() {
+class WebViewFragment : Fragment() {
 
-    lateinit var binding: FragmentWebViewBinding
+    private lateinit var binding: FragmentWebViewBinding
     private val viewModel: WebViewViewModel by activityViewModels()
 
 

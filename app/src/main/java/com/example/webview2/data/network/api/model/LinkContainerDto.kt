@@ -1,4 +1,4 @@
-package com.example.webview2.data.network.model
+package com.example.webview2.data.network.api.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
