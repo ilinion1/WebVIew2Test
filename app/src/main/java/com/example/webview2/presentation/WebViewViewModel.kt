@@ -2,19 +2,17 @@ package com.example.webview2.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.webview2.data.database.AppDatabase
 import com.example.webview2.data.database.repository.WebViewRepositoryImpl
+import com.example.webview2.domain.GetLinkUseCase
+import com.example.webview2.domain.LoadDataUseCase
 
 class WebViewViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private val repository = WebViewRepositoryImpl(application)
-    private val db = AppDatabase.getInstance(application)
-    val getLink = db.webViewDao().getLink()
 
+    val getLinkUseCase = GetLinkUseCase(repository)
+    val loadDataUseCase = LoadDataUseCase(repository)
 
-    suspend fun loadData() {
-        repository.loadData()
-    }
 
 }

@@ -33,17 +33,13 @@ class WebViewFragment : Fragment() {
         val visited = user.getBoolean("hasVisited", false)
 
         if (!visited) {
-            viewModel.getLink.observe(this) {
-                it?.let {
-                    it.link?.let { it1 -> webViewSetup(it1) }
-                }
+            viewModel.getLinkUseCase().observe(this){
+                it.link?.let { it1 -> webViewSetup(it1) }
             }
             user.edit().putBoolean("hasVisited", true).apply()
         } else {
-            viewModel.getLink.observe(this) {
-                it?.let {
-                    it.home?.let { it1 -> webViewSetup(it1) }
-                }
+            viewModel.getLinkUseCase().observe(this){
+                it.home?.let { it1 -> webViewSetup(it1) }
             }
         }
     }

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
 
         lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.loadData()
+            viewModel.loadDataUseCase()
             starsFragment(WebViewFragment())
         }
     }
